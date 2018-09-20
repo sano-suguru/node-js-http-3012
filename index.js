@@ -7,7 +7,12 @@ const server = http.createServer((req, res) => {
     });
     res.write(req.headers['user-agent']);
     res.end();
+}).on('error', err => {
+    console.error(`[${new Date()}] Server Error`, err);
+}).on('clientError', err => {
+    console.error(`[${new Date()}] Clinet Error`, err);
 });
+
 const port = 8000;
 server.listen(port, () => {
     console.log('Listening on ' + port);
