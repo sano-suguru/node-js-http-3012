@@ -1,6 +1,7 @@
 'use strict';
 const http = require('http');
 const server = http.createServer((req, res) => {
+    console.info(`[${new Date()}] Request by ${req.connection.remoteAddress}`);
     res.writeHead(200, {
         'Content-Type': 'text/plain; charset=utf-8'
     });
